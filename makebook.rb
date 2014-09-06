@@ -29,7 +29,7 @@ n = 1
 files.each do |f|
   number = n.to_s.rjust(5, "0")
   `cp odd/#{f} combined/#{number}.jpg`
-  `mogrify -crop #{odd_x_crop}x#{odd_y_crop}+#{odd_x_offset}+#{odd_y_offset} -rotate #{odd_rotation} combined/#{number}.jpg`
+  `mogrify -strip -crop #{odd_x_crop}x#{odd_y_crop}+#{odd_x_offset}+#{odd_y_offset} -rotate #{odd_rotation} combined/#{number}.jpg`
   n += 2
   puts "moved #{f}"
 end
@@ -40,7 +40,7 @@ n = 0
 files.each do |f|
   number = n.to_s.rjust(5, "0")
   `cp even/#{f} combined/#{number}.jpg`
-  `mogrify -crop #{even_x_crop}x#{even_y_crop}+#{even_x_offset}+#{even_y_offset} -rotate #{even_rotation} combined/#{number}.jpg`
+  `mogrify -strip -crop #{even_x_crop}x#{even_y_crop}+#{even_x_offset}+#{even_y_offset} -rotate #{even_rotation} combined/#{number}.jpg`
   n += 2
   puts "moved #{f}"
 end
